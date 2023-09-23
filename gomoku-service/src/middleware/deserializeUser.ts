@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getUserByID } from '../service/validation.service'
-import { verifyJWT } from '../utils/jwt'
+import { verifyJwt } from '../utils/jwt'
 
 interface TokenBody{
     username: string;
@@ -26,7 +26,7 @@ export const userDeserialize = async (
         }
 
         //validating access token
-        const decode = verifyJWT<TokenBody> (token);
+        const decode = verifyJwt<TokenBody> (token);
 
         if(!decode){
             return res.status(401).send("Invalid Token");

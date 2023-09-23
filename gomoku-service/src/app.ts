@@ -3,12 +3,21 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import connectDB from "./utils/connectDB";
 
+import gameHandler from "./handler/game.handler";
+import validationHandler from "./handler/validation.handler";
+
 dotenv.config();
 //  Connect to database.
 connectDB();
 const app: Express = express();
 const port = process.env.PORT;
 app.use(express.json());
+
+app.use('/api/validation', validationHandler)
+app.use('/api/game', gameHandler)
+
+// app.use('/game', gameHandler);
+// app.use('/validation', validationHandler);
 
 // app.get('/', (req: Request, res: Response)=>{
 //     res.send('Hello World!');

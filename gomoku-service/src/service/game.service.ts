@@ -1,6 +1,7 @@
-import mongoose, { Document , Schema } from 'mongoose';
-import { GameDoc } from '../model/game.model';
-import GameModel from '../model/game.model';
+// import mongoose, { Document , Schema } from 'mongoose';
+import mongoose, { DocumentDefinition } from 'mongoose';
+
+import GameModel, { GameDoc } from '../model/game.model';
 
 //  Function to return all games.
 export async function getAllGames() {
@@ -8,7 +9,7 @@ export async function getAllGames() {
 }
 
 //  Function to return game by Id.
-export async function getGameByID(id: string){
+export async function getGameById(id: string){
     return await GameModel.findById(id).lean();
 }
 
@@ -18,12 +19,12 @@ export async function getGamesByUserID(userId: string){
 }
 
 //  Function to create a new game.
-export async function createGame(input: Document<GameDoc>){
+export async function createGame(input: DocumentDefinition<GameDoc>){
     return GameModel.create(input);
 }
 
 //  Function to update a game.
-export async function updateGame(id: string, userID: string, input: Document<GameDoc>){  // added userId.
+export async function updateGame(id: string, userID: string, input: DocumentDefinition<GameDoc>){  // added userId.
     return GameModel.findOneAndUpdate(
         {
             _id: new mongoose.Types.ObjectId(id),
