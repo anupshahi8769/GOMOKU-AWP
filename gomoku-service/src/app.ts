@@ -14,7 +14,7 @@ const port = process.env.PORT;
 app.use(express.json());
 
 app.use("/api/validation", validationHandler);
-app.use("/api/game", gameHandler);
+app.use("/api/games", gameHandler);
 
 // app.get('/', (req: Request, res: Response)=>{
 //     res.send('Hello World!');
