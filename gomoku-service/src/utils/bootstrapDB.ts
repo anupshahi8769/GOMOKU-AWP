@@ -2,7 +2,7 @@ import 'dotenv/config';
 import connect from './connectDB';
 
 import UserModel from "../model/user.model";
-import users from "../data/user.json";
+import users from "../data/users.json";
 
 import MovieModel from '../model/game.model';
 import games from '../data/games.json';

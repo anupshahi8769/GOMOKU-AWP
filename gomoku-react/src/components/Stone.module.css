@@ -1,0 +1,32 @@
+.stone {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.1rem;
+  cursor: pointer;
+  border-radius: 100%;
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(128, 128, 128, 0.500);
+  margin: 0.25rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: light;
+  color: red;
+}
+
+.stone-map {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.1rem;
+}
+
+.stone.player1 {
+    cursor: not-allowed;
+    background-color: black;
+  }
+  
+.stone.player2 {
+    cursor: not-allowed;
+    background-color: white;
+  }

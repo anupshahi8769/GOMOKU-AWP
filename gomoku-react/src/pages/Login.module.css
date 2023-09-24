@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    width: 500px;
+    margin: 25px auto;
+    flex-direction:column;
+    flood-opacity: 50%;
+    flex-wrap: wrap;  
+    padding-top: 1%;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    justify-content:space-around;
+
+}

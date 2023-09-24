@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const connectDB = async () => {
-  const dbUri = process.env.dbURI || ''
+  const dbUri = process.env.dbURI || 'mongodb://localhost:27017/'
   console.log(`⚡️[server]: Connecting to DB...`)
   try {
     await mongoose.connect(dbUri)

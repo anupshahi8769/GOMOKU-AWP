@@ -1,44 +1,24 @@
-// import {object, string, number, array, TypeOf, union} from "zod";
+import {object, string, number, array, TypeOf, union} from "zod";
 
-// const payload = {
-//     body: object({
-//         username: string({
-//             required_error:"Username is required",
-//         }),
-//         password: string({
-//             required_error:"Password is required",
-//         }),
-//     })
-// };
+const payload = {
+    body: object({
+        username: string({
+            required_error:"Username is required",
+        }),
+        password: string({
+            required_error:"Password is required",
+        }),
+    })
+};
 
-// export const signupSchema = object({
-//     ...payload
-// })
+export const signupSchema = object({
+    ...payload
+})
 
-// export const loginSchema = Object ({
-//     ...payload
-// })
-
-// export type SignupInput = TypeOf<typeof signupSchema>;
-// export type LoginInput = TypeOf<typeof loginSchema>;
-
-
-import { object, string, TypeOf } from 'zod';
-
-const payloadSchema = object({
-  body: object({
-    username: string({
-      required_error: "Username is required",
-    }),
-    password: string({
-      required_error: "Password is required",
-    }),
-  }),
-});
-
-export const signupSchema = payloadSchema;
-
-export const loginSchema = payloadSchema;
+export const loginSchema = Object ({
+    ...payload
+})
 
 export type SignupInput = TypeOf<typeof signupSchema>;
 export type LoginInput = TypeOf<typeof loginSchema>;
+

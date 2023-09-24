@@ -13,11 +13,8 @@ const app: Express = express();
 const port = process.env.PORT;
 app.use(express.json());
 
-app.use('/api/validation', validationHandler)
-app.use('/api/game', gameHandler)
-
-// app.use('/game', gameHandler);
-// app.use('/validation', validationHandler);
+app.use("/api/validation", validationHandler);
+app.use("/api/game", gameHandler);
 
 // app.get('/', (req: Request, res: Response)=>{
 //     res.send('Hello World!');

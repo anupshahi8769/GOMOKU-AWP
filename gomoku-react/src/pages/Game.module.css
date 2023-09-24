@@ -1,0 +1,12 @@
+.message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 2rem;
+  }
