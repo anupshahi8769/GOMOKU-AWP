@@ -2,9 +2,9 @@ import express, { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import { createUser, getUserByUsername } from "../service/validation.service";
 import {
-  LoginInput,
-  SignupInput,
-  signupSchema,
+  InputLogin,
+  InputRegister,
+  schemaRegister,
 } from "../schema/validation.schema";
 import { signJwt } from "../utils/jwt";
 import validateSchema from "../middleware/validateSchema";
@@ -12,17 +12,17 @@ import validateSchema from "../middleware/validateSchema";
 const validationHandler = express.Router();
 
 validationHandler.post(
-  "/signup",
-  validateSchema(signupSchema),
-  async (req: Request<{}, {}, SignupInput["body"]>, res: Response) => {
+  "/register",
+  validateSchema(schemaRegister),
+  async (req: Request<{}, {}, InputRegister["body"]>, res: Response) => {
     try {
       const { username, password } = req.body;
-
+      console.log(req.body)
       const existingUser = await getUserByUsername(username);
       if (existingUser) {
         return res
           .status(409)
-          .json({ error: "User already exists. Please log in." });
+          .send({ error: "User already exists. Please log in." });
       }
 
       const encryptedPassword = await bcrypt.hash(password, 10);
@@ -34,17 +34,17 @@ validationHandler.post(
 
       const token = signJwt({ username, _id: newUser._id });
 
-      res.status(201).json({ _id: newUser._id, token });
+      res.status(200).json({ _id: newUser._id, token });
     } catch (err) {
-      console.error(err);
-      return res.status(500).json({ error: "Internal server error" });
+      console.log(err);
+      return res.status(500).send(err);
     }
   }
 );
 
 validationHandler.post(
   "/login",
-  async (req: Request<{}, {}, LoginInput["body"]>, res: Response) => {
+  async (req: Request<{}, {}, InputLogin["body"]>, res: Response) => {
     try {
       const { username, password } = req.body;
 
@@ -52,14 +52,12 @@ validationHandler.post(
 
       if (user && (await bcrypt.compare(password, user.password))) {
         const token = signJwt({ username, _id: user._id });
-
-        res.status(200).json({ _id: user._id, token });
-      } else {
-        res.status(401).json({ error: "Invalid credentials" });
-      }
+        return res.status(200).json({_id: user._id, token});
+      } 
+      return res.status(400).send('Invalid Credentials')
     } catch (err) {
       console.error(err);
-      return res.status(500).json({ error: "Internal server error" });
+      return res.status(500).send(err);
     }
   }
 );

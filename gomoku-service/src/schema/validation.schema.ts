@@ -1,24 +1,23 @@
-import {object, string, number, array, TypeOf, union} from "zod";
+import { object, string, number, array, TypeOf, union } from "zod";
 
 const payload = {
-    body: object({
-        username: string({
-            required_error:"Username is required",
-        }),
-        password: string({
-            required_error:"Password is required",
-        }),
-    })
+  body: object({
+    username: string({
+      required_error: "Username is required",
+    }),
+    password: string({
+      required_error: "Password is required",
+    }),
+  }),
 };
 
-export const signupSchema = object({
-    ...payload
-})
+export const schemaRegister = object({
+  ...payload,
+});
 
-export const loginSchema = Object ({
-    ...payload
-})
+export const schemaLogin = Object({
+  ...payload,
+});
 
-export type SignupInput = TypeOf<typeof signupSchema>;
-export type LoginInput = TypeOf<typeof loginSchema>;
-
+export type InputRegister = TypeOf<typeof schemaRegister>;
+export type InputLogin = TypeOf<typeof schemaLogin>;

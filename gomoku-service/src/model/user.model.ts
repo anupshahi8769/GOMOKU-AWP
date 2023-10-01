@@ -7,10 +7,13 @@ export interface UserDocument extends Document {
   updatedAt?: Date;
 }
 
-const userSchema = new mongoose.Schema({
-  username: { type: String, require: true, unique: true},
-  password: { type: String, require: true},
-  // Mongoose uses timestamps to assign createdAt and updatedAt fields to the schema. The type set is Date.
-},{ timestamps: true })
+const userSchema = new mongoose.Schema(
+  {
+    username: { type: String, require: true, unique: true },
+    password: { type: String, require: true },
+    // Mongoose uses timestamps to assign createdAt and updatedAt fields to the schema. The type set is Date.
+  },
+  { timestamps: true }
+);
 
-export default mongoose.model<UserDocument>('User', userSchema)
+export default mongoose.model<UserDocument>("User", userSchema);

@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    width: 500px;
+    margin: 25px auto;
+    flex-direction:column;
+    flood-opacity: 50%;
+    flex-wrap: wrap;  
+    padding-top: 1%;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    justify-content:space-around;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem auto;
+  }
+  
+  .message{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: aquamarine;
+  }

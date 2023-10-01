@@ -6,7 +6,7 @@ import style from "./Header.module.css";
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, Logout } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
 
   const getActions = () => {
     if (user) {
@@ -15,7 +15,7 @@ export default function Header() {
           <button
             className={style.action}
             onClick={() => {
-              Logout();
+              logout();
               navigate("/");
             }}
           >

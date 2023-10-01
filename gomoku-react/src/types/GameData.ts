@@ -1,10 +1,12 @@
-import { GAME_STATUS } from '../constants'
+import { GameStatus } from '../constants'
 
 export type stoneMap = [number, number]
 
 export type GameData = {
-  size: number
+  _id: string,
+  userId: string,
+  size: number,
   turns: stoneMap[]
   date: string
-  result: GAME_STATUS
+  result: GameStatus
 }
